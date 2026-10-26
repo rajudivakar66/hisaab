@@ -1,0 +1,50 @@
+{
+  "name": "hisaab",
+  "productName": "Hisaab",
+  "version": "1.0.0",
+  "description": "Double-entry accounting with GST for Indian businesses",
+  "type": "module",
+  "main": "src/main.js",
+  "author": "rajudivakar66",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test \"test/*.test.js\"",
+    "dist:win": "electron-builder --win --publish never"
+  },
+  "devDependencies": {
+    "electron": "44.7.0",
+    "electron-builder": "26.17.0"
+  },
+  "build": {
+    "appId": "com.rajudivakar66.hisaab",
+    "productName": "Hisaab",
+    "copyright": "Copyright © 2026 rajudivakar66",
+    "files": [
+      "src/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "win": {
+      "icon": "build/icon.png",
+      "target": [
+        { "target": "nsis", "arch": ["x64"] },
+        { "target": "portable", "arch": ["x64"] }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "shortcutName": "Hisaab",
+      "artifactName": "Hisaab-Setup-${version}.${ext}"
+    },
+    "portable": {
+      "artifactName": "Hisaab-Portable-${version}.${ext}"
+    }
+  }
+}
